@@ -6,7 +6,7 @@ ECMAScript's [`Intl`](https://tc39.es/ecma402/#intl-object) builtin on the [Boa]
 
 ## Structure
 
-Each file on the [tests] directory indicates the list of tests that failed while testing that service.
+Each file on the [tests](./tests) directory indicates the list of tests that failed while testing that service.
 Every test has a comment, indicating the original test from which the minimized test was extracted.
 
 ## To Run
