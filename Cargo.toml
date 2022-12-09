@@ -13,5 +13,5 @@ icu_plurals = { version = "1", features = ["serde"] }
 icu_provider = { version = "1" }
 icu_provider_adapters = { version = "1", features = ["serde"] }
 icu_decimal = { version = "1", features = ["serde"] }
-icu_testdata = { version = "1" }
+icu_testdata = { version = "1", features = ["buffer"] }
 serde = "1"

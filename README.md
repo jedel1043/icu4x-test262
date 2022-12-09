@@ -14,3 +14,11 @@ Every test has a comment, indicating the original test from which the minimized 
 ```bash
 > cargo test
 ```
+
+## Stats
+
+| Component             | ✔️   	| ➖    | ❌    |           |
+| -                  	| -     | -     | -     | -     	|
+| Locale              	| 190 	| 68 	| 16 	| 69.34% 	|
+| ListFormat          	| 158 	| 0  	| 4  	| 97.53% 	|
+| getCanonicalLocales 	| 54  	| 0  	| 22 	| 71.05% 	|
