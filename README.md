@@ -22,4 +22,4 @@ Every test has a comment, indicating the original test from which the minimized 
 | Locale              	| 190 	| 68 	| 16 	| 69.34% 	|
 | ListFormat          	| 158 	| 0  	| 4  	| 97.53% 	|
 | getCanonicalLocales 	| 54  	| 0  	| 22 	| 71.05% 	|
-| Collator              | 106   | 0   | 12  | 89.83%  |
+| Collator              | 110   | 0   | 8   | 89.83%  |
