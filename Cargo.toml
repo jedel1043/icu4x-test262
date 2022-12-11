@@ -14,4 +14,5 @@ icu_provider = { version = "1" }
 icu_provider_adapters = { version = "1", features = ["serde"] }
 icu_decimal = { version = "1", features = ["serde"] }
 icu_testdata = { version = "1", features = ["buffer"] }
+icu_collator = { version = "1", features = ["serde"] }
 serde = "1"

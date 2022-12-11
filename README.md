@@ -11,8 +11,16 @@ Every test has a comment, indicating the original test from which the minimized 
 
 ## To Run
 
+Runs all tests:
+
 ```bash
-> cargo test
+> cargo test --no-fail-fast
+```
+
+Runs the test file `suite`:
+
+```bash
+> cargo test --test [suite]
 ```
 
 ## Stats
@@ -22,4 +30,4 @@ Every test has a comment, indicating the original test from which the minimized 
 | Locale              	| 190 	| 68 	| 16 	| 69.34% 	|
 | ListFormat          	| 158 	| 0  	| 4  	| 97.53% 	|
 | getCanonicalLocales 	| 54  	| 0  	| 22 	| 71.05% 	|
-| Collator              | 110   | 0   | 8   | 93.22%  |
+| Collator              | 106   | 0   | 12   | 89.83%  |

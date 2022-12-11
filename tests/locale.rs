@@ -37,44 +37,50 @@ fn constructor_options_canonicalized() {
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/constructor-options-numberingsystem-invalid.js
 #[test]
 fn constructor_options_numberingsystem_invalid() {
-    // Should error:
-    "-latn-".parse::<Value>().unwrap_err();
-    "latn-".parse::<Value>().unwrap_err();
-    "latn--".parse::<Value>().unwrap_err();
+    for tag in ["-latn-", "latn-", "latn--"] {
+        tag.parse::<Value>().expect_err("undetected invalid value");
+    }
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/constructor-unicode-ext-invalid.js
 #[test]
 fn constructor_unicode_ext_invalid() {
-    // Should error because of duplicate singleton subtag
     "da-u-ca-gregory-u-ca-buddhist"
         .parse::<Locale>()
-        .unwrap_err();
+        .expect_err("undetected duplicate singleton subtag");
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/invalid-tag-throws.js
 #[test]
 fn invalid_tag_throws() {
-    // Should error because of duplicate singleton subtag
-    "pt-u-ca-gregory-u-nu-latn".parse::<Locale>().unwrap_err();
+    "pt-u-ca-gregory-u-nu-latn"
+        .parse::<Locale>()
+        .expect_err("undetected duplicate singleton subtag");
 
-    // Should error because of incomplete Unicode extension sequences
-    "de-u-ca-".parse::<Locale>().unwrap_err();
+    "de-u-ca-"
+        .parse::<Locale>()
+        .expect_err("undetected incomplete Unicode extension sequences");
 
-    // Should error because of incomplete private-use tags
-    "si-x".parse::<Locale>().unwrap_err();
+    "si-x"
+        .parse::<Locale>()
+        .expect_err("undetected incomplete private-use tags");
 
-    // ECMAScript uses BCP 47 locale identifiers, which reject using underscores:
-    "de_DE".parse::<Locale>().unwrap_err();
-    "DE_de".parse::<Locale>().unwrap_err();
-    "cmn_Hans".parse::<Locale>().unwrap_err();
-    "cmn-hans_cn".parse::<Locale>().unwrap_err();
-    "es_419".parse::<Locale>().unwrap_err();
-    "es-419-u-nu-latn-cu_bob".parse::<Locale>().unwrap_err();
-    "i_klingon".parse::<Locale>().unwrap_err();
-    "cmn-hans-cn-t-ca-u-ca-x_t-u".parse::<Locale>().unwrap_err();
-    "enochian_enochian".parse::<Locale>().unwrap_err();
-    "de-gregory_u-ca-gregory".parse::<Locale>().unwrap_err();
+    for tag in [
+        "de_DE",
+        "DE_de",
+        "cmn_Hans",
+        "cmn-hans_cn",
+        "es_419",
+        "es-419-u-nu-latn-cu_bob",
+        "i_klingon",
+        "cmn-hans-cn-t-ca-u-ca-x_t-u",
+        "enochian_enochian",
+        "de-gregory_u-ca-gregory",
+    ] {
+        tag.parse::<Locale>().expect_err(
+            "ECMAScript uses BCP 47 locale identifiers, which reject using underscores",
+        );
+    }
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/likely-subtags-grandfathered.js
@@ -168,7 +174,7 @@ fn removing_likely_subtags_first_adds_likely_subtags() {
         {
             let old_minimal = minimal.clone();
             expander.minimize(&mut minimal);
-            assert_eq!(old_minimal, minimal);
+            assert_eq!(old_minimal, minimal, "tag should be minimal");
         }
 
         // Assert RemoveLikelySubtags(tag) returns |minimal|.
