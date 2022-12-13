@@ -6,13 +6,13 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-icu_locid_transform = { version = "1", features = ["serde"] }
-icu_locid = { version = "1", features = ["serde"] }
-icu_datetime = { version = "1", features = ["serde"] }
-icu_plurals = { version = "1", features = ["serde"] }
-icu_provider = { version = "1" }
-icu_provider_adapters = { version = "1", features = ["serde"] }
-icu_decimal = { version = "1", features = ["serde"] }
-icu_testdata = { version = "1", features = ["buffer"] }
-icu_collator = { version = "1", features = ["serde"] }
+icu_locid_transform = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_locid = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_datetime = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_plurals = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_provider = { git = "https://github.com/unicode-org/icu4x.git" }
+icu_provider_adapters = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_decimal = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
+icu_testdata = { git = "https://github.com/unicode-org/icu4x.git", features = ["buffer"] }
+icu_collator = { git = "https://github.com/unicode-org/icu4x.git", features = ["serde"] }
 serde = "1"

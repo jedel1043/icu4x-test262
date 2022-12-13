@@ -163,6 +163,7 @@ fn invalid_tags() {
         "si-x", // incomplete private-use tags
         "x-",
         "x-y-",
+        "en-----US",
     ] {
         tag.parse::<Locale>()
             .expect_err("should not parse invalid locale");

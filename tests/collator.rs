@@ -1,4 +1,6 @@
-use icu_collator::provider::CollationMetadataV1Marker;
+use icu_collator::{
+    provider::CollationMetadataV1Marker, CaseLevel, Collator, CollatorOptions, Strength,
+};
 use icu_locid::locale;
 use icu_provider::{DataLocale, DataProvider, DataRequest, DataRequestMetadata};
 
@@ -18,4 +20,26 @@ fn supported_locales_of_basic() {
     DataProvider::<CollationMetadataV1Marker>::load(&data, request).expect_err(
         r#"should reject the request, since the locale "zxx" has "no linguistic content""#,
     );
+}
+
+// https://github.com/tc39/test262/blob/main/test/intl402/Collator/prototype/compare/non-normative-sensitivity.js
+#[test]
+fn func() {
+    let data = icu_testdata::unstable();
+    let collator = Collator::try_new_unstable(&data, &locale!("es").into(), {
+        let mut opts = CollatorOptions::new();
+        opts.strength = Some(Strength::Primary);
+        opts.case_level = Some(CaseLevel::On);
+        opts
+    })
+    .unwrap();
+    let target = "Aa";
+    let input = ["Aa", "aA", "áÁ", "Aã"];
+
+    let matches = input
+        .into_iter()
+        .filter(|s| collator.compare(s, target).is_eq())
+        .collect::<Vec<_>>();
+
+    assert_eq!(&matches, &["Aa, Aã"])
 }

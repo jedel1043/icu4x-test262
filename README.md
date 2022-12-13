@@ -28,6 +28,6 @@ Runs the test file `suite`:
 | Component             | ✔️   	| ➖    | ❌    |           |
 | -                  	| -     | -     | -     | -     	|
 | Locale              	| 190 	| 68 	| 16 	| 69.34% 	|
-| ListFormat          	| 158 	| 0  	| 4  	| 97.53% 	|
+| ListFormat          	| 162 	| 0  	| 0  	| 100% 🎉  	|
 | getCanonicalLocales 	| 54  	| 0  	| 22 	| 71.05% 	|
 | Collator              | 106   | 0   | 12   | 89.83%  |
