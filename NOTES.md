@@ -4,11 +4,6 @@
 
 ## Collator
 
-https://github.com/tc39/test262/blob/main/test/intl402/Collator/usage-de.js
-
-- Missing support for the `usage` option, specifically the `search` value which requires locale data for
-sensitivity level defaults.
-
 https://github.com/tc39/test262/blob/main/test/intl402/Collator/numeric-and-caseFirst.js
 https://github.com/tc39/test262/blob/main/test/intl402/Collator/missing-unicode-ext-value-defaults-to-true.js
 

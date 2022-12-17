@@ -23,6 +23,7 @@ fn supported_locales_of_basic() {
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Collator/prototype/compare/non-normative-sensitivity.js
+// Fixed on https://github.com/unicode-org/icu4x/commit/856b3dcc07e34ef2935c256cd50265cbe04aa6b9
 #[test]
 fn func() {
     let data = icu_testdata::unstable();
@@ -41,5 +42,5 @@ fn func() {
         .filter(|s| collator.compare(s, target).is_eq())
         .collect::<Vec<_>>();
 
-    assert_eq!(&matches, &["Aa, Aã"])
+    assert_eq!(&matches, &["Aa", "Aã"])
 }
