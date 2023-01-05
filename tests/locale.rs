@@ -35,6 +35,7 @@ fn constructor_options_canonicalized() {
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/constructor-options-numberingsystem-invalid.js
+// Fixed by https://github.com/unicode-org/icu4x/commit/ac150ebaf85c86b76c903468e6f09aae7892e24f
 #[test]
 fn constructor_options_numberingsystem_invalid() {
     for tag in ["-latn-", "latn-", "latn--"] {
@@ -43,11 +44,12 @@ fn constructor_options_numberingsystem_invalid() {
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/constructor-unicode-ext-invalid.js
+// Fixed by https://github.com/unicode-org/icu4x/commit/ac150ebaf85c86b76c903468e6f09aae7892e24f
 #[test]
 fn constructor_unicode_ext_invalid() {
     "da-u-ca-gregory-u-ca-buddhist"
-        .parse::<Locale>()
-        .expect_err("undetected duplicate singleton subtag");
+    .parse::<Locale>()
+    .expect_err("undetected duplicate singleton subtag");
 }
 
 // https://github.com/tc39/test262/blob/main/test/intl402/Locale/invalid-tag-throws.js
