@@ -1,6 +1,7 @@
 use icu_locid::Locale;
 use icu_locid_transform::LocaleCanonicalizer;
 
+#[track_caller]
 fn check_canonicalization(tag: &str, canonical: &str, canonicalizer: &LocaleCanonicalizer) {
     let mut tag = tag.parse().unwrap();
     canonicalizer.canonicalize(&mut tag);
@@ -65,7 +66,7 @@ fn transformed_ext_canonical() {
     for (tag, canonical) in [
         ("sl-t-sl-rozaj-biske-1994", "sl-t-sl-1994-biske-rozaj"),
         ("DE-T-M0-DIN-K0-QWERTZ", "de-t-k0-qwertz-m0-din"),
-        ("en-t-m0-true", "en-t-m0-tru"),
+        ("en-t-m0-true", "en-t-m0-true"),
         ("en-t-iw", "en-t-he"),
         (
             "und-Latn-t-und-hani-m0-names",
